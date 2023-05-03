@@ -1,0 +1,777 @@
+@charset "UTF-8";
+@import url(reset.css);
+/* reset.css 연결 */
+/* font-family: 'Nanum Brush Script', cursive;
+font-family: 'Nanum Gothic', sans-serif; */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* 레이아웃 */
+#Wrap {}
+
+#header {
+    background: url(https://cdn.pixabay.com/photo/2015/07/28/22/01/office-865091_960_720.jpg) center center/cover;
+    height: 325px;
+}
+#contents {}
+#footer {
+    border-top: 1px solid #eee;
+}
+/* ---------------------------- 컨텐츠 레이아웃 (#contents)   */
+.cont_nav {background-color: #f6fdff;}
+#cont_title {background-color: #eaf7fd;}
+#cont_banner {background-color: #dceff7;}
+#cont_contents {background-color: #f6fdff;}
+/* ---------------------------- container */
+.container {
+    width: 990px;
+    margin: 0 auto;
+}
+/* ---------------------------- header */
+.header {}
+
+.header .header_menu {
+    text-align: right;
+}
+
+.header .header_menu a {
+    color: #fff;
+    display: inline-block;
+    padding: 10px 0 10px 13px;
+}
+.header .header_menu a:hover {
+    color: #999;
+}
+.header .header_title {
+    text-align: center;
+}
+.header .header_title h1 {
+    background-color: #4aa8d4;
+    color: #fff;
+    font-size: 24px;
+    text-transform: uppercase; /* 대문자 변형 */
+    margin-top: 40px;
+    display: inline-block;
+    padding: 5px 20px 6px; /* 위 좌우 아래 */
+}
+.header .header_title a {
+    color: #fff;
+    font-size: 18px;
+    display: inline-block;
+    padding: 5px 20px 6px;
+    background-color: #2698cb;
+    margin-top: -5px; /* padding은 마이너스 적용 불가능 */
+ 
+}
+.header .header_icon {
+    text-align: center;
+    margin-top: 30px;
+
+}
+.header .header_icon a {
+    display: inline-block;
+    width: 60px; height: 60px;
+    background-image: url(../img/icon.png);
+    margin: 0 3px; /* 아이콘 사이엔 3px+3px */
+}
+/* 이미지 스프라이트 기법 (중요) */
+.header .header_icon a.icon1 {
+    /* background-position: 0(left기준) 0(top기준); */
+    background-position: 0 0;
+}
+.header .header_icon a.icon2 {
+    background-position: 0 -60px;
+}
+.header .header_icon a.icon3 {
+    background-position: 0 -120px;
+}
+.header .header_icon a.icon4 {
+    background-position: 0 -180px;
+}
+/* a:hover */
+.header .header_icon a.icon1:hover {
+    background-position: -60px 0;
+}
+.header .header_icon a.icon2:hover {
+    background-position: -60px -60px;
+}
+.header .header_icon a.icon3:hover {
+    background-position: -60px -120px;
+}
+.header .header_icon a.icon4:hover {
+    background-position: -60px -180px;
+}
+
+/* ------------- nav */
+.nav {
+    padding: 30px 0;
+    display: none;
+}
+.nav>div {
+    float: left;
+    width: 40%;
+}
+.nav>div.last {
+    width: 20%;
+}
+.nav>div h3 {
+    font-size: 18px;
+    color: #25a2d0;
+    margin-bottom: 10px;
+}
+.nav>div ol {
+    overflow: hidden; /* clearfix를 여러곳에 해야할 경우 */
+}
+.nav>div ol li {
+    float: left;
+    width: 50%;
+    position: relative;
+    margin-bottom: 5px;
+}
+.nav>div.last ol li {
+    width: 100%;
+}
+/* 마우스를 올렸을 때 밑줄이 늘어남 */
+.nav>div ol li::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: 0;/* 왼쪽을 기준으로 밑줄이 늘어남 */
+    width: 0%; 
+    /* .nav>div ol li::after {transform: scaleX(0);}
+    li:hover:after {transform: scaleX(1)} 중앙을 기준으로 늘어남 */
+    height: 2px;
+    background-color: #25a2d0;
+    transition: 0.3s;
+}
+.nav>div ol li:hover:after {
+    width: 80%; /* 마우스를 올렸을 경우 설정한 넓이만큼 늘어남 */
+}
+/* ------------- title */
+.title {
+    position: relative;
+}
+.title h2 {
+    font-size: 40px;
+    font-family: 'Nanum Brush Script', cursive;
+    color: #2c94c4;
+    text-align: center;
+    padding: 10px 0;
+    letter-spacing: 2px; /* 글자 사이 공간(자간) */
+}
+.title .Btn {
+    position: absolute;
+    right: 5px; top: 5px;
+    width: 60px;
+    height: 60px;
+    background-color: #000;
+    background: url(../img/icon.png) 0 -600px;
+    margin: 5px 0;
+}
+.title .Btn.on {
+    /* custom.js 참고 */
+    background-position: 0 -660px;
+}
+
+/* ------------- banner */
+.banner {
+    padding: 24px 0 40px;
+}
+.banner img {
+    border: 4px solid #dcdcdc;
+}
+.banner img:hover {
+    border: 4px solid #98dcdc;
+}
+.banner .slick-prev {
+    position: absolute;
+    left: -80px; top: 70px;
+    background: url(../img/icon.png);
+    width: 43px; height: 43px;
+    background-position: -150px 0;
+    text-indent: -9999px; /* 글자 숨기기 */
+}
+.banner .slick-prev:hover {
+    background-position: -193px 0;
+}
+
+.banner .slick-next {
+    position: absolute;
+    right: -80px; top: 70px;
+    background: url(../img/icon.png);
+    width: 43px; height: 43px;
+    background-position: -150px -43px;
+    text-indent: -9999px;
+}
+.banner .slick-next:hover {
+    background-position: -193px -43px;
+}
+.banner .slick-list {
+    left: 25px;
+    margin-top: 10px;
+}
+.banner .slick-dots {
+    text-align: center;
+}
+.banner .slick-dots li {
+    display: inline-block; 
+    margin: 5px;
+    
+}
+.banner .slick-dots li button {
+    font-size: 0; /* 글자를 안 보이게 할 수 있음 (1~9는 실행안됨) */
+    width: 15px; height: 15px;
+    background-color: #5dbfeb;
+    border-radius: 20px; /* 50% : 원으로 설정 */
+    cursor: pointer; /* 마우스를 올렸을 때 손가락모양으로 바뀜 */
+    transition: 0.3s;
+    transform: scaleX(1);
+    /* transform-origin: left top; => 왼쪾에서부터 커짐 */
+}
+.banner .slick-dots li.slick-active button {
+    background-color: #2b91c8;
+    transform: scaleX(1.5); /* 중앙을 중심으로 50% 커짐 */
+    border-radius: 6px;
+}
+/* --------------- cont_contents */
+.cont {
+    padding-top: 30px;
+}
+.cont .column {
+    width: 289px;
+    height: 363px;
+    border-right: 1px solid #c8c8c8;
+    float: left;
+    padding-right: 30px;
+    margin: 0 30px 30px 0;
+    position: relative;
+
+}
+.cont .col3 {
+    border-right: 0;
+    margin-right: 0;
+    padding-right: 0;
+}
+.cont .col6 {
+    border-right: 0;
+    margin-right: 0;
+    padding-right: 0;
+}
+.cont .column h3 .icon_img {
+    background: url(../img/icon.png);
+    width: 60px; height: 60px;
+    left: 0; top: 0;
+}
+/* 이미지 스프라이트 기법 (중요) */
+.cont .col1 h3 .icon_img {
+    background-position: 0 -240px;
+}
+.cont .col2 h3 .icon_img {
+    background-position: 0 -300px;
+}
+.cont .col3 h3 .icon_img {
+    background-position: 0 -360px;
+}
+.cont .col4 h3 .icon_img {
+    background-position: 0 -420px;
+}
+.cont .col5 h3 .icon_img {
+    background-position: 0 -480px;
+}
+.cont .col6 h3 .icon_img {
+    background-position: 0 -540px;
+}
+
+.cont .col1 h3 .icon_img:hover {
+    background-position: -60px -240px;
+}
+.cont .col2 h3 .icon_img:hover {
+    background-position: -60px -300px;
+}
+.cont .col3 h3 .icon_img:hover {
+    background-position: -60px -360px;
+}
+.cont .col4 h3 .icon_img:hover {
+    background-position: -60px -420px;
+}
+.cont .col5 h3 .icon_img:hover {
+    background-position: -60px -480px;
+}
+.cont .col6 h3 .icon_img:hover {
+    background-position: -60px -540px;
+}
+.cont .column h3 .icon_title {
+    font-size: 16px;
+    color: #2c94c4;
+    padding-left: 70px; /* 이미지와 글자가 있을 땐 글자가 밀리도록 함(패딩을 이용 */
+}
+.cont .column .icon_desc {
+    border-bottom: 1px solid #c8c8c8;
+    padding-bottom: 20px;
+    margin-bottom: 15px;
+    padding-left: 70px; /* 이미지와 글자가 있을 땐 글자가 밀리도록 함(패딩을 이용 */
+}
+
+.notice,
+.notice2,
+.notice3 {
+    position: relative;
+}
+.notice h4,
+.notice2 h4,
+.notice3 h4 {
+    font-size: 14px;
+    color: #0093bd;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+.notice .more,
+.notice2 .more,
+.notice3 .more {
+    /* ir효과로 position:absoulte로 인해 자기의 속성을 잊어버림
+    부모나 조상의 영향을 받음 */
+    width: 17px; height: 17px;
+    background: url(../img/icon.png) -150px -90px;
+    right: 0; top: 0;
+}
+.notice .more:hover,
+.notice2 .more:hover {
+    background-position: -167px -90px;
+}
+
+/* --------------- col1 ---------- 게시판 1 (notice) */
+.notice ul li,
+.notice2 ul li a {
+    /* 말 줄임말 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /* list 앞에 블릿기호처럼 넣기 */
+    background: url(../img/dot.gif) no-repeat 0 center;
+    padding-left: 10px;
+}
+.notice ul li a {
+    font-size: 12px;
+}
+
+/* --------------- col1 ---------- 게시판 2 (notice2) */
+.notice2 {
+    margin-top: 15px;
+}
+.notice2 ul li {
+    position: relative;
+    overflow: hidden; /* li가 여러개 있으므로 각 li에게 class명
+    clearfix를 주는 것과 똑같음 */
+}
+.notice2 ul li a {
+    font-size: 13px;
+    /* float이 적용되는 순간 자기 넓이를 인식할 수 있게 됨 */
+    float: left;
+    width: 65%;
+}
+.notice2 ul li span {
+    float: right;
+    width: 30%;
+    font-size: 12px;
+}
+/* --------------- col2 ---------- 게시판 3 (notice3) */
+.notice3 ul {}
+.notice3 ul li {
+    position: relative;
+    padding:  8px 0 16px 60px;
+}
+.notice3 ul li a {}
+.notice3 ul li a img {
+    position: absolute; left: 0; top: 0;
+    width: 50px;
+}
+.notice3 ul li a strong {
+   
+}
+.notice3 ul li a span {
+    /* 말 줄임말은 속성이 block이 아니면 적용 안됨 */
+    display: block;
+    /* 말 줄임말 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* --------------- col3 -------------------------- */
+/* ---------------- login---------------- */
+.login-wrap {
+    background-color: #f2f4f5;
+    padding: 15px;
+}
+#login-form {
+    font-size: 12px;
+}
+/* login-header */
+.login-header {
+    padding: 5px 0;
+    margin-bottom: 5px;
+}
+.login-wrap .lh_check {
+    float: left;
+    padding-right: 15px;
+}
+.login-wrap .lh_check .info_check {
+    /* 인라인끼리 라인을 맞출 때 사용 */
+    vertical-align: -3px;
+}
+.login-wrap .lh_check label {}
+.login-wrap .lh_ip {
+    /* 형제 지간인 ih_check가 float이므로 똑같이 적용 */
+    float: left;
+}
+.login-wrap .lh_ip em {
+
+}
+/* login-content */
+.login-content {
+    position: relative;
+}
+.lc_text {}
+.lc_text .input_text {
+    width: 182px; height: 16px;
+    border: 1px solid #bebebe;
+    background-color: #fff;
+    outline: none;
+    margin-bottom: 3px;
+    padding: 3px 5px;
+}
+.login-content .lc_btn {
+    position: absolute;
+    top: 0; right: 0;
+    width: 62px; height: 50px;
+    background-color: #fff;
+    border:  1px solid #bebebe;
+}
+/* login-footer */
+.login-footer {
+    margin-top: 5px;
+}
+.login-footer ul {}
+.login-footer ul li {
+    display: inline;
+    margin-right: 5px;
+}
+.login-footer ul li:last-child {
+    margin-right: 0;
+}
+.login-footer ul li a {}
+/* ---------------- popup ------------- */
+.popup {
+    margin-top: 15px;
+}
+.popup h4 {
+    font-size: 14px;
+    color: #0093bd;
+    font-weight: bold;
+    padding-bottom: 4px;
+}
+.popup ul {}
+.popup ul li {
+    float: left;
+    width: 93px;
+    margin-right: 5px;
+}
+.popup ul li:last-child {
+    margin-right: 0;
+}
+.popup ul li a {}
+.popup ul li a img {
+    width: 100%;
+}
+
+#layer {
+    position: fixed;
+    left: 50px; top: 50px;
+    width: 700px;
+    border: 10px solid #dceff7;
+    display: none;
+}
+#layer img {
+    width: 100%;
+    /* img의 알지 못하는 위아래 공간을 없앰 */
+    display: block;
+}
+#layer .close {
+    position: absolute;
+    right: 50px; top: 50px;
+    background-color: #0094bd;
+    padding: 5px 6px;
+    color: #fff;
+}
+/* --------------- col4 ---------- notice_hover */
+.notice_hover {}
+.notice_hover h4 {
+    color: #0093bd;
+    font-weight: bold;
+    font-size: 14px;
+    padding-bottom: 3px;
+}
+.notice_hover ul li {
+    float: left;
+    width: 93px;
+    margin-right: 5px;
+}
+.notice_hover ul li:last-child {
+    margin-right: 0;
+}
+.notice_hover ul li a {}
+.notice_hover ul li a span {
+    display: block; /* span은 인라인요소이므로 공간을 인식하지 못함 따라서 자식인 em이 absolute인데 공간이 없는 부모에게 relative을 준다하더라도 적용하지 못함 
+    그래서 span의 속성을 공간을 인식하는 block으로 바꿈 */
+    position: relative;
+}
+.notice_hover ul li a span img {
+    width: 100%; /* 공간을 인식하는 block 요소인 li의 넓이를 따라감  */
+    display: block;
+}
+.notice_hover ul li a span em {
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    color: #fff;
+    text-align: center; /* absolute이므로 자기 속성을 잊어버림(원래는 인라인에 적용하지 못함 */
+    line-height: 98px;
+    /* 영역을 안 보이게 하는 방법 */
+    /* display: none; : 실제 영역이 없어짐 */
+    /* opacity:0 : 영역이 사라지지 않음 (animation이 적용됨,시간 적용) */
+    /* visibility: hidden;  영역이 사라지지 않고 숨김 (animation X) */
+    visibility: hidden;
+}
+.notice_hover ul li a span:hover em {
+    /* 마우스를 올렸을 때 적용한 속성들이 나타남 */
+    visibility: visible; 
+}
+.notice_hover ul li a strong {
+    font-size: 12px;
+    /* strong도 인라인요소이므로 padding과 margin의 상하가 적용되지 않음 */
+    padding-top: 3px;
+    display: block;
+    text-align: center;
+}
+/* --------------- col4 ---------- notice_hover2 */
+.notice_hover2 {
+    margin-top: 20px;
+}
+.notice_hover2 ul li {
+    position: relative;
+    float: left;
+    width: 93px;
+    height: 93px; /* 강제로 높이값을 줬으므로 부모에게 깨짐방지로 overflow:hidden처리 하면 글자가 보이지 않음(부모는 자식의 높이값을 따라감) */
+    margin-right: 5px;
+}
+.notice_hover2 ul li:last-child {
+    margin-right: 0;
+}
+.notice_hover2 ul li a {}
+.notice_hover2 ul li a span {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    height: 93px;
+}
+.notice_hover2 ul li a span img {
+    width: 100%;
+    /* img는 인라인요소이므로 태어날 때부터 공간을 가지고 태어남 */
+    display: block;
+}
+.notice_hover2 ul li a span em {
+    position: absolute;
+    left: 0; bottom: -20px;
+    background-color: rgba(0,0,0,0.7);
+    width: 100%;
+    opacity: 0;
+    color: #fff;
+    /* absolute 된 상태이기 때문에 공간을 인식 못하는 자기 속성을 잊어버린다*/
+    text-align: center; 
+    transition: 0.3s;
+    padding: 2px 0;
+}
+.notice_hover2 ul li a span:hover em {
+    bottom: 0;
+    opacity: 1;
+}
+.notice_hover2 ul li a strong {
+    display: block;
+    font-size: 12px;
+    padding-top: 3px;
+    text-align: center;
+}
+/* --------------- col5 ---------- tab_menu */
+.tab_menu {
+    position: relative;
+    height: 108px;
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+.tab_menu ul {
+    border-bottom: 1px solid #ccc;
+}
+.tab_menu ul li {
+    float: left;
+    border: 1px solid #ccc;
+    margin-right: -1px; /* 겹쳐있는 선 처리 (padding은 음수적용 x) */
+    margin-bottom: -1px;
+}
+.tab_menu ul li a {
+    display: block;
+    padding: 5px 10px;
+}
+.tab_menu ul li ul {
+    position: absolute;
+    left: 9px; top: 48px;
+    width: 270px;
+    border: none;
+}
+.tab_menu ul li ul li {
+    background: url(../img/dot.gif) no-repeat 0 center;
+    padding-left: 13px;
+    float: none; /* 부모 li의 float:left가 적용됨으로 none처리 */
+    border: none;
+}
+.tab_menu ul li ul li a {
+    /* 말 줄임말 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 0 3px 0; /* 부모 a 태그의 padding이 방향대로 적혀 있으므로 자식 a의 padding 값을 설정할 때도 위치별로 적어야 함 */
+}
+.tab_menu ul li.active {
+    background-color: #2c94c4;
+}
+.tab_menu ul li.active a {
+    color: #fff;
+}
+.tab_menu ul li.active ul li a {
+    color: #222;
+}
+/* --------------- col5 ---------- notice4 */
+.notice4 {
+    border: 1px solid #ccc;
+    margin-top: 15px;
+    position: relative;
+}
+.notice4 h4 {
+    border-bottom: 1px solid #ccc;
+    padding: 8px 10px;
+    color: #0090bd;
+    font-weight: bold;
+}
+.notice4 h4 em {
+    color: #cf3292;
+}
+
+.notice4 ul {
+    padding: 10px;
+}
+.notice4 ul li {
+    overflow: hidden;
+}
+.notice4 ul li a {
+    float: left;
+    width: 60%;
+    /* 말 줄임말 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.notice4 ul li span {
+    float: right;
+    width: 30%;
+}
+
+.notice4 .more {
+    position: absolute;
+    right: 9px; top: 9px;
+}
+
+/* --------------- col6 ---------- gallery */
+.gallery {
+    border: 1px solid #ccc;
+    position: relative;
+}
+.gallery h4 {
+    font-size: 14px;
+    color: #0090bd;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0 8px 11px;
+    font-weight: bold;
+}
+.gallery img {
+    width: 100%;
+}
+.gallery_btn {
+    position: absolute;
+    right: 8px; top: 7px;
+}
+.gallery_btn button {
+    width: 23px; height: 23px;
+    background: url(../img/icon.png) no-repeat;
+}
+.gallery_btn .gb_icon1 {
+    background-position: -150px -120px;
+}
+.gallery_btn .gb_icon2 {
+    background-position: -150px -143px;
+}
+.gallery_btn .gb_icon3 {
+    background-position: -150px -166px;
+}
+.gallery_btn .gb_icon4 {
+    background-position: -150px -189px;
+}
+
+.gallery_btn .gb_icon1:hover {
+    background-position: -173px -120px;
+}
+.gallery_btn .gb_icon2:hover {
+    background-position: -173px -143px;
+}
+.gallery_btn .gb_icon3:hover {
+    background-position: -173px -166px;
+}
+.gallery_btn .gb_icon4:hover {
+    background-position: -173px -189px;
+}
+
+/* --------------------------------------- footer */
+.footer {
+    text-align: center;
+    padding: 25px 0;
+}
+.footer ul {
+    margin-bottom: 20px;
+}
+.footer ul li {
+    display: inline;
+    padding: 0 7px 0 10px;
+    position: relative;
+    
+}
+.footer ul li::before {
+    content: "";
+    width: 1px; height: 12px;
+    background-color: #ccc;
+    position: absolute;
+    left: 0; top: 4px;
+}
+.footer ul li:first-child:before {
+    width: 0; height: 0;
+    /* display: none; */
+}
+.footer ul li a:hover {
+    color: #222;
+    font-weight: bold;
+}
+.footer address {
+    text-align: center;
+}
+
+
+
